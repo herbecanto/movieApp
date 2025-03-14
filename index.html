@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Movie App</title>
+      <link rel="stylesheet" href="./styles/app.css" />
+      <link
+         rel="stylesheet"
+         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu,search"
+      />
+   </head>
+   <body>
+      <header>
+         <h1>Movie App</h1>
+
+         <section class="header__list-container">
+            <ul class="header__list">
+               <li class="header__item">Home</li>
+               <li class="header__item">Trending Movies</li>
+               <li class="header__item">Categories</li>
+               <li class="header__item">Popular</li>
+               <li class="header__item">Upcoming</li>
+            </ul>
+         </section>
+
+         <section class="header__section">
+            <form class="header__search" autocomplete="on">
+               <input class="search__input" type="text" placeholder="Buscar" />
+               <button class="search__button">
+                  <span class="material-symbols-outlined"> search </span>
+               </button>
+            </form>
+            <select class="header__lang" name="language" id="lang">
+               <option value="en">US English</option>
+               <option value="es-ES">ES Spanish</option>
+               <option value="pt-BR">Br Portuguese Br</option>
+               <option value="fr">FR French</option>
+            </select>
+            <div class="header__menu">
+               <span class="material-symbols-outlined"> menu </span>
+            </div>
+         </section>
+      </header>
+      <main>
+         <section class="hero-section"></section>
+         <section class="trending-preview">
+            <div class="trending-preview__header">
+               <h2>Tendencias</h2>
+               <button>Ver más</button>
+            </div>
+            <article class="trending-preview__slider">
+               <div class="movie-container">
+                  <img
+                     src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
+                     alt="movie title"
+                  />
+                  <div>
+                     <h4>Moana 2</h4>
+                     <button class="button--liked"></button>
+                  </div>
+               </div>
+               <div class="movie-container">
+                  <img
+                     src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
+                     alt="movie title"
+                  />
+                  <div>
+                     <h4>Moana 2</h4>
+                     <button></button>
+                  </div>
+               </div>
+               <div class="movie-container">
+                  <img
+                     src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
+                     alt="movie title"
+                  />
+                  <div>
+                     <h4>Moana 2</h4>
+                     <button></button>
+                  </div>
+               </div>
+               <div class="movie-container">
+                  <img
+                     src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
+                     alt="movie title"
+                  />
+                  <div>
+                     <h4>Moana 2</h4>
+                     <button></button>
+                  </div>
+               </div>
+               <div class="movie-container">
+                  <img
+                     src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
+                     alt="movie title"
+                  />
+                  <div>
+                     <h4>Moana 2</h4>
+                     <button></button>
+                  </div>
+               </div>
+            </article>
+         </section>
+      </main>
+   </body>
+</html>

@@ -9,5 +9,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/herbecanto/movieApp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/herbecanto/movieApp/issues"
+  },
+  "homepage": "https://github.com/herbecanto/movieApp#readme"
 }
