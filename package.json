@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/herbecanto/movieApp/issues"
   },
-  "homepage": "https://github.com/herbecanto/movieApp#readme"
+  "homepage": "https://github.com/herbecanto/movieApp#readme",
+  "dependencies": {
+    "axios": "^1.8.3"
+  }
 }
