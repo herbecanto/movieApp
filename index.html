@@ -9,6 +9,12 @@
          rel="stylesheet"
          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu,search"
       />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Young+Serif&display=swap"
+         rel="stylesheet"
+      />
    </head>
    <body>
       <header>
@@ -43,21 +49,60 @@
          </section>
       </header>
       <main>
-         <section class="hero-section"></section>
+         <section class="hero-section" id="hero-container">
+            <!-- <div class="hero__poster">
+               <picture class="hero__image">
+                  <source
+                     media="(min-width:500px)"
+                     srcset="
+                        https://image.tmdb.org/t/p/original/5CAf9N4EfFYBJQPh3J4cbJxM088.jpg
+                     "
+                  />
+                  <img
+                     src="https://image.tmdb.org/t/p/w500//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
+                     alt=""
+                  />
+               </picture>
+            </div>
+
+            <article class="hero__info-container">
+               <div class="hero__header">
+                  <span class="hero__rating">5.6</span>
+                  <span class="hero__time">1h 30m</span>
+                  <span class="hero__trending">TRENDING</span>
+               </div>
+
+               <div class="hero__info">
+                  <h3 class="hero__title" id="hero-title">Moana 2</h3>
+                  <p>
+                     Tras recibir una inesperada llamada de sus antepasados,
+                     Vaiana debe viajar a los lejanos mares de Oceanía y
+                     adentrarse en peligrosas aguas perdidas para vivir una
+                     aventura sin precedentes.
+                  </p>
+               </div>
+
+               <div class="hero__buttons">
+                  <button class="hero__trailer-btn">Play Trailer</button>
+                  <button class="hero__details-btn">Details</button>
+               </div>
+            </article> -->
+         </section>
+
          <section class="trending-preview">
             <div class="trending-preview__header">
                <h2>Tendencias</h2>
-               <button>Ver más</button>
+               <button class="trending-preview__btn">Ver más</button>
             </div>
-            <article class="trending-preview__slider">
+            <article class="trending-preview__slider" id="trending-preview">
                <div class="movie-container">
                   <img
                      src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
                      alt="movie title"
                   />
+                  <button class="button--liked"></button>
                   <div>
                      <h4>Moana 2</h4>
-                     <button class="button--liked"></button>
                   </div>
                </div>
                <div class="movie-container">
@@ -65,9 +110,9 @@
                      src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
                      alt="movie title"
                   />
+                  <button></button>
                   <div>
                      <h4>Moana 2</h4>
-                     <button></button>
                   </div>
                </div>
                <div class="movie-container">
@@ -75,9 +120,9 @@
                      src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
                      alt="movie title"
                   />
+                  <button></button>
                   <div>
                      <h4>Moana 2</h4>
-                     <button></button>
                   </div>
                </div>
                <div class="movie-container">
@@ -85,9 +130,9 @@
                      src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
                      alt="movie title"
                   />
+                  <button></button>
                   <div>
                      <h4>Moana 2</h4>
-                     <button></button>
                   </div>
                </div>
                <div class="movie-container">
@@ -95,13 +140,33 @@
                      src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
                      alt="movie title"
                   />
+                  <button></button>
                   <div>
                      <h4>Moana 2</h4>
-                     <button></button>
                   </div>
                </div>
             </article>
          </section>
+
+         <section class="categories-section">
+            <h2>Categories</h2>
+            <div class="categories__button-section">
+               <button>Acción</button>
+               <button>Aventura</button>
+               <button>Animación</button>
+               <button>Comedia</button>
+               <button>Drama</button>
+               <button>Familia</button>
+               <button>Fantasía</button>
+               <button>Terror</button>
+               <button>Romance</button>
+               <button>Suspenso</button>
+            </div>
+         </section>
       </main>
+
+      <script src="./src/nodes.js"></script>
+      <script type="module" src="./src/webComponents/heroComponent.js"></script>
+      <script src="./src/main.js"></script>
    </body>
 </html>

@@ -135,3 +135,4 @@ dist
 /src/secrets.js
 #.vscode config
 .vscode
+/src/webComponents
