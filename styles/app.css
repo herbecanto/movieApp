@@ -35,8 +35,12 @@ main {
    flex-direction: column;
    width: 100%;
 }
+a {
+   text-decoration: none;
+}
 .hero-section,
-.trending-preview {
+.trending-preview,
+.categories-section {
    margin: 0 auto;
 }
 ::-webkit-scrollbar {
@@ -60,8 +64,8 @@ header {
    display: flex;
    justify-content: space-between;
    width: 100%;
-   height: auto;
-   padding: 10px 10px;
+   height: 50px;
+   padding: 0 10px;
    background-color: var(--primary-color);
    color: white;
 }
@@ -80,8 +84,22 @@ header h1 {
    align-content: center;
 }
 .header__item {
-   margin: 0 20px;
-   align-self: center;
+   padding: 0 20px;
+   align-content: center;
+   height: 100%;
+   width: fit-content;
+   border-bottom: 3px solid transparent;
+   transition: border-bottom 0.2s ease-in-out;
+}
+.header__item a {
+   color: white;
+   height: 100%;
+   font-size: 18px;
+}
+
+.header__item:hover {
+   border-bottom: 3px solid white;
+   cursor: pointer;
 }
 
 /* 
@@ -251,6 +269,9 @@ HERO INFO
    border: 1px solid var(--tertiary-color);
    font-size: 1rem;
 }
+.hero__buttons button:hover {
+   background-color: #53049e;
+}
 
 .hero__trailer-btn {
    width: 120px;
@@ -258,7 +279,7 @@ HERO INFO
 .hero__details-btn {
    width: fit-content;
 }
-@media (min-width: 960px) {
+@media (min-width: 985px) {
    .hero-section {
       flex-direction: row-reverse;
       max-width: 1024px;
@@ -326,6 +347,7 @@ TRENDIG PREVIEW SECTION
 }
 .trending-preview__header h2 {
    margin-bottom: 0;
+   margin-left: 0;
 }
 .trending-preview__btn {
    background-color: transparent;
@@ -357,13 +379,13 @@ TRENDIG PREVIEW SECTION
    padding-bottom: 10px;
    background-color: black;
    border-radius: 8px;
-   transition: 500ms;
+   transition: 200ms;
    position: relative;
    flex-shrink: 0;
 }
 .movie-container:hover {
    transform: scale(1.05);
-   transition: transform 500ms;
+   transition: transform 300ms;
 }
 .movie-container img {
    width: inherit;
@@ -422,6 +444,33 @@ CATEGORIES
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 */
 .categories-section {
+   max-width: 1024px;
+   height: auto;
+   margin-bottom: 30px;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-content: center;
+   padding: 20px;
+}
+.categories__button-section {
+   display: flex;
+   gap: 20px;
+   width: 100%;
+   overflow-x: auto;
+   padding-bottom: 12px;
+}
+.categories__button-section button {
+   padding: 8px 12px;
+   border-radius: 5px;
+   background-color: #1e3e62;
+   border: 1px solid var(--secondary-color);
+   color: var(--secondary-color);
+   height: auto;
+   font-size: 16px;
+}
+.categories__button-section button:hover {
+   background-color: #0e2641;
 }
 
 .hidden {
@@ -434,18 +483,26 @@ CATEGORIES
    }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 985px) {
    .header__list-container {
       display: flex;
    }
    .header__menu {
       display: none;
    }
-   .trending-preview {
+   .trending-preview,
+   .categories-section {
       max-width: 80vw;
    }
    .movie-container {
       width: 200px;
+   }
+   .categories__button-section {
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+   .categories__button-section button {
+      height: 40px;
    }
 }
 @media (min-width: 2000px) {

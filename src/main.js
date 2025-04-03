@@ -46,6 +46,8 @@ function createMovieContainer(movies, container) {
 function createCategories(categories, container) {
    categories.forEach((category) => {
       const button = create("button");
+      button.innerHTML = category.name;
+      container.appendChild(button);
    });
 }
 
@@ -69,9 +71,13 @@ async function createHero(id) {
                   <source
                      media="(min-width:500px)"
                      srcset="
-                        https://image.tmdb.org/t/p/original/${
-                           movie.backdrop_path
-                        }
+                        https://image.tmdb.org/t/p/w780/${movie.backdrop_path}
+                     "
+                  />
+                  <source
+                     media="(min-width:800px)"
+                     srcset="
+                        https://image.tmdb.org/t/p/1280/${movie.backdrop_path}
                      "
                   />
                   <img
@@ -135,6 +141,7 @@ async function getCategories() {
 
    const genres = data.genres;
    console.log(genres);
+   createCategories(genres, categoriesContainer);
 }
 getTrendingPreview();
 getCategories();
