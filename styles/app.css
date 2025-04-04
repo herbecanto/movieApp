@@ -40,7 +40,7 @@ a {
 }
 .hero-section,
 .trending-preview,
-.categories-section {
+.categories-preview__section {
    margin: 0 auto;
 }
 ::-webkit-scrollbar {
@@ -53,6 +53,26 @@ a {
 ::-webkit-scrollbar-thumb {
    background: var(--secondary-color);
    border-radius: 5px;
+}
+
+.slider__container {
+   position: relative;
+}
+.slider__container::before,
+.slider__container::after {
+   content: "";
+   position: absolute;
+   width: 20px;
+   height: calc(100% - 10px);
+   top: 0;
+
+   z-index: 1;
+   pointer-events: none;
+   background: linear-gradient(to right, rgb(0, 0, 0), transparent);
+}
+.slider__container::after {
+   right: 0;
+   background: linear-gradient(to left, rgb(0, 0, 0), transparent);
 }
 
 /* 
@@ -98,7 +118,7 @@ header h1 {
 }
 
 .header__item:hover {
-   border-bottom: 3px solid white;
+   border-bottom: 3px solid var(--secondary-color);
    cursor: pointer;
 }
 
@@ -366,7 +386,9 @@ TRENDIG PREVIEW SECTION
    overflow-x: auto;
    width: auto;
    padding: 20px;
+   position: relative;
 }
+
 .movie-container {
    display: flex;
    justify-content: center;
@@ -390,6 +412,9 @@ TRENDIG PREVIEW SECTION
 .movie-container img {
    width: inherit;
    height: auto;
+}
+.movie-container img:hover {
+   cursor: pointer;
 }
 .movie-container > div {
    display: flex;
@@ -440,10 +465,10 @@ TRENDIG PREVIEW SECTION
 
 /* 
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-CATEGORIES
+CATEGORIES PREVIEW
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 */
-.categories-section {
+.categories-preview__section {
    max-width: 1024px;
    height: auto;
    margin-bottom: 30px;
@@ -451,14 +476,13 @@ CATEGORIES
    display: flex;
    flex-direction: column;
    align-content: center;
-   padding: 20px;
 }
 .categories__button-section {
    display: flex;
    gap: 20px;
    width: 100%;
    overflow-x: auto;
-   padding-bottom: 12px;
+   padding: 20px;
 }
 .categories__button-section button {
    padding: 8px 12px;
@@ -473,8 +497,47 @@ CATEGORIES
    background-color: #0e2641;
 }
 
+/* 
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Generic Section
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+*/
+
+.generic__header {
+   display: flex;
+   width: 100%;
+   padding: 20px;
+   gap: 20px;
+}
+.backBtn {
+   width: 30px;
+   height: 30px;
+   background-color: var(--tertiary-color);
+   border-radius: 5px;
+   color: var(--secondary-color);
+}
+.generic-movies__container {
+   display: grid;
+   max-width: 1300px;
+   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+   height: auto;
+   padding: 30px;
+   column-gap: 20px;
+   justify-items: center;
+   row-gap: 30px;
+   margin: 0 auto;
+}
+.generic-movies__container > .movie-container {
+   width: 100%;
+   max-width: 300px;
+   max-height: 500px;
+   margin-right: 0;
+}
 .hidden {
    display: none;
+}
+.header__item--selected {
+   border-bottom: 3px solid var(--secondary-color);
 }
 
 @media (min-width: 500px) {
@@ -504,10 +567,16 @@ CATEGORIES
    .categories__button-section button {
       height: 40px;
    }
+   .generic-movies__container > .movie-container {
+      max-width: 100%;
+   }
 }
 @media (min-width: 2000px) {
    .movie-container {
       width: 250px;
       max-width: 250px;
+   }
+   .generic-movies__container > .movie-container {
+      max-width: 100%;
    }
 }

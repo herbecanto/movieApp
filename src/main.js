@@ -1,5 +1,5 @@
 const create = (element) => document.createElement(element);
-const language = "es-MX";
+const language = "es";
 
 async function fetchData(params) {
    const API = "https://api.themoviedb.org/3/";
@@ -114,7 +114,7 @@ async function createHero(id) {
 async function getTrendingPreview() {
    const movies = await fetchData("trending/movie/day");
    console.log(movies);
-   createMovieContainer(movies, trendingPreview);
+   createMovieContainer(movies, trendingPreviewMovies);
    createHero(movies[0].id);
    /* try {
       const response = await fetch(
@@ -141,7 +141,11 @@ async function getCategories() {
 
    const genres = data.genres;
    console.log(genres);
-   createCategories(genres, categoriesContainer);
+   createCategories(genres, categoriesButtonsContainer);
 }
-getTrendingPreview();
-getCategories();
+
+async function getTrendingMovies() {
+   const movies = await fetchData("trending/movie/day");
+   console.log(movies);
+   createMovieContainer(movies, genericContainer);
+}
