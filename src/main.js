@@ -1,12 +1,12 @@
 const create = (element) => document.createElement(element);
 const language = "es";
 
-async function fetchData(params) {
+async function fetchData(params, extraParams) {
    const API = "https://api.themoviedb.org/3/";
    const API_KEY = "a6ab7a979a8d2f657c42b91b20a9b7ae";
    try {
       const response = await fetch(
-         `${API}${params}?api_key=${API_KEY}&language=${language}`
+         `${API}${params}?api_key=${API_KEY}&language=${language}${extraParams}`
       );
 
       if (response.status === 200) {
@@ -44,8 +44,12 @@ function createMovieContainer(movies, container) {
 }
 
 function createCategories(categories, container) {
+   container.innerHTML = "";
    categories.forEach((category) => {
       const button = create("button");
+      button.addEventListener("click", () => {
+         location.hash = `category=${category.id}-${category.name}`;
+      });
       button.innerHTML = category.name;
       container.appendChild(button);
    });
@@ -63,21 +67,19 @@ async function createHero(id) {
          movieH++;
          movieTime - 60;
       } */
-      console.log(movieH);
-      console.log(movieM);
 
       heroContainer.innerHTML = `<div class="hero__poster">
-               <picture class="hero__image">
+               <picture class="hero__image">                  
+                  <source
+                     media="(min-width:800px)"
+                     srcset="
+                        https://image.tmdb.org/t/p/w1280/${movie.backdrop_path}
+                     "
+                  />
                   <source
                      media="(min-width:500px)"
                      srcset="
                         https://image.tmdb.org/t/p/w780/${movie.backdrop_path}
-                     "
-                  />
-                  <source
-                     media="(min-width:800px)"
-                     srcset="
-                        https://image.tmdb.org/t/p/1280/${movie.backdrop_path}
                      "
                   />
                   <img
@@ -136,16 +138,21 @@ async function getTrendingPreview() {
    } */
 }
 
-async function getCategories() {
+async function getCategories(container) {
    const data = await fetchData("genre/movie/list");
 
    const genres = data.genres;
    console.log(genres);
-   createCategories(genres, categoriesButtonsContainer);
+   createCategories(genres, container);
 }
 
 async function getTrendingMovies() {
    const movies = await fetchData("trending/movie/day");
    console.log(movies);
+   createMovieContainer(movies, genericContainer);
+}
+async function getMoviesByCategory(id) {
+   const movies = await fetchData(`discover/movie`, `&with_genres=${id}`);
+   console.log("category", movies);
    createMovieContainer(movies, genericContainer);
 }

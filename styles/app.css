@@ -89,10 +89,11 @@ header {
    background-color: var(--primary-color);
    color: white;
 }
-header h1 {
+header h1 > a {
    font-size: 20px;
    align-self: center;
    padding-left: 10px;
+   color: var(--secondary-color);
 }
 
 .header__list-container {
@@ -102,9 +103,9 @@ header h1 {
    display: flex;
    width: 100%;
    align-content: center;
+   gap: 3vw;
 }
 .header__item {
-   padding: 0 20px;
    align-content: center;
    height: 100%;
    width: fit-content;
@@ -112,6 +113,8 @@ header h1 {
    transition: border-bottom 0.2s ease-in-out;
 }
 .header__item a {
+   display: flex;
+   align-items: center;
    color: white;
    height: 100%;
    font-size: 18px;
@@ -268,11 +271,13 @@ HERO INFO
    font-size: 1.8rem;
    padding: 10px;
    margin-bottom: 20px;
+   text-align: center;
 }
 .hero__info p {
    padding: 0 10px;
    margin-bottom: 30px;
    display: none;
+   text-shadow: 2px 1px 2px black;
 }
 .hero__buttons {
    display: flex;
@@ -283,11 +288,15 @@ HERO INFO
 .hero__buttons button {
    padding: 8px;
    border-radius: 8px;
-   height: 40px;
+   height: 50px;
+   width: 150px;
    color: var(--secondary-color);
    background-color: var(--primary-color);
    border: 1px solid var(--tertiary-color);
-   font-size: 1rem;
+   font-size: 1.1rem;
+}
+.hero__buttons button:nth-child(2) {
+   width: 80px;
 }
 .hero__buttons button:hover {
    background-color: #53049e;
@@ -318,7 +327,7 @@ HERO INFO
          ),
          linear-gradient(
             90deg,
-            rgba(0, 0, 0, 0.9) 30%,
+            rgba(0, 0, 0, 1) 25%,
             rgba(255, 255, 255, 0) 67%
          );
    }
@@ -374,6 +383,8 @@ TRENDIG PREVIEW SECTION
    border: 3px solid var(--tertiary-color);
    border-radius: 5px;
    width: 100px;
+   height: 40px;
+   font-size: 1rem;
    color: var(--secondary-color);
 }
 .trending-preview__btn:hover {
@@ -469,7 +480,7 @@ CATEGORIES PREVIEW
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 */
 .categories-preview__section {
-   max-width: 1024px;
+   max-width: 1200px;
    height: auto;
    margin-bottom: 30px;
    width: 100%;
@@ -477,14 +488,19 @@ CATEGORIES PREVIEW
    flex-direction: column;
    align-content: center;
 }
-.categories__button-section {
+.categories-preview__section h2 {
+   margin-left: 20px;
+}
+.categories__button-section,
+.generic__categories-slider {
    display: flex;
    gap: 20px;
    width: 100%;
    overflow-x: auto;
    padding: 20px;
 }
-.categories__button-section button {
+.categories__button-section button,
+.generic__categories-slider button {
    padding: 8px 12px;
    border-radius: 5px;
    background-color: #1e3e62;
@@ -578,5 +594,11 @@ Generic Section
    }
    .generic-movies__container > .movie-container {
       max-width: 100%;
+   }
+   .generic__categories-slider {
+      justify-content: center;
+   }
+   .generic__categories-slider button {
+      height: 60px;
    }
 }

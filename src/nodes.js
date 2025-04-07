@@ -13,8 +13,10 @@ const trendingPreviewBtn = query("#trending-preview-btn");
 /* Categories */
 const categoriesPreviewContainer = query("#categories-preview__container");
 const categoriesButtonsContainer = query("#categories-buttons-container");
+const categoriesButtonHeader = query("#header-categories a");
 
 /* Generic */
 const genericSection = query("#genericMovies-section");
 const genericContainer = query("#genericMovies-container");
 const genericTitle = query("#generic-title");
+const genericSlider = query("#generic-slider");
