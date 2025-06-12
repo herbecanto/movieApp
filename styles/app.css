@@ -103,7 +103,6 @@ header h1 > a {
    display: flex;
    width: 100%;
    align-content: center;
-   gap: 3vw;
 }
 .header__item {
    align-content: center;
@@ -111,6 +110,7 @@ header h1 > a {
    width: fit-content;
    border-bottom: 3px solid transparent;
    transition: border-bottom 0.2s ease-in-out;
+   padding: 0 1.5vw;
 }
 .header__item a {
    display: flex;
@@ -480,7 +480,7 @@ CATEGORIES PREVIEW
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 */
 .categories-preview__section {
-   max-width: 1200px;
+   max-width: 100%;
    height: auto;
    margin-bottom: 30px;
    width: 100%;
@@ -570,7 +570,8 @@ Generic Section
       display: none;
    }
    .trending-preview,
-   .categories-section {
+   .categories-section,
+   .categories-preview__section {
       max-width: 80vw;
    }
    .movie-container {

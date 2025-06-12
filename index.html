@@ -32,16 +32,21 @@
                   <a>Categories</a>
                </li>
                <li class="header__item" id="header-popular">
-                  <a href="">Popular</a>
+                  <a href="#popular">Popular</a>
                </li>
-               <li class="header__item"><a href="">Upcoming</a></li>
+               <li class="header__item"><a href="#upcoming">Upcoming</a></li>
             </ul>
          </section>
 
          <section class="header__section">
             <form class="header__search" autocomplete="on">
-               <input class="search__input" type="text" placeholder="Buscar" />
-               <button class="search__button">
+               <input
+                  class="search__input"
+                  id="search-form-input"
+                  type="text"
+                  placeholder="Buscar"
+               />
+               <button class="search__button" id="search-form-button">
                   <span class="material-symbols-outlined"> search </span>
                </button>
             </form>
@@ -56,6 +61,7 @@
             </div>
          </section>
       </header>
+
       <main>
          <section class="hero-section" id="hero-container">
             <!-- <div class="hero__poster">

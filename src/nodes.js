@@ -20,3 +20,7 @@ const genericSection = query("#genericMovies-section");
 const genericContainer = query("#genericMovies-container");
 const genericTitle = query("#generic-title");
 const genericSlider = query("#generic-slider");
+
+/* Search */
+const searchButton = query("#search-form-button");
+const searchInput = query("#search-form-input");

@@ -55,6 +55,7 @@ function createCategories(categories, container) {
    });
 }
 
+//Función para el hero
 async function createHero(id) {
    try {
       const movie = await fetchData(`movie/${id}`);
@@ -154,5 +155,20 @@ async function getTrendingMovies() {
 async function getMoviesByCategory(id) {
    const movies = await fetchData(`discover/movie`, `&with_genres=${id}`);
    console.log("category", movies);
+   createMovieContainer(movies, genericContainer);
+}
+
+async function getMoviesByPopularity() {
+   const movies = await fetchData("movie/popular");
+   createMovieContainer(movies, genericContainer);
+}
+
+async function getMoviesByUpcoming() {
+   const movies = await fetchData("movie/upcoming");
+   createMovieContainer(movies, genericContainer);
+}
+
+async function getMoviesByQuery(query) {
+   const movies = await fetchData(`search/movie`, `&query=${query}`);
    createMovieContainer(movies, genericContainer);
 }
