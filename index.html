@@ -64,31 +64,40 @@
 
       <main>
          <section class="hero-section" id="hero-container">
-            <!-- <div class="hero__poster">
+            <div class="hero__poster">
                <picture class="hero__image">
                   <source
+                     id="hero-poster800"
+                     media="(min-width:800px)"
+                     srcset="
+                        https://image.tmdb.org/t/p/w1280/5CAf9N4EfFYBJQPh3J4cbJxM088.jpg
+                     "
+                  />
+                  <source
+                     id="hero-poster500"
                      media="(min-width:500px)"
                      srcset="
-                        https://image.tmdb.org/t/p/original/5CAf9N4EfFYBJQPh3J4cbJxM088.jpg
+                        https://image.tmdb.org/t/p/w780/5CAf9N4EfFYBJQPh3J4cbJxM088.jpg
                      "
                   />
                   <img
-                     src="https://image.tmdb.org/t/p/w500//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
-                     alt=""
+                     id="hero-posterMobile"
+                     src="https://image.tmdb.org/t/p/w500/b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
+                     alt="Moana"
                   />
                </picture>
             </div>
 
             <article class="hero__info-container">
                <div class="hero__header">
-                  <span class="hero__rating">5.6</span>
-                  <span class="hero__time">1h 30m</span>
+                  <span class="hero__rating" id="hero-rating">5.6</span>
+                  <span class="hero__time" id="hero-time">1h 30m</span>
                   <span class="hero__trending">TRENDING</span>
                </div>
 
                <div class="hero__info">
                   <h3 class="hero__title" id="hero-title">Moana 2</h3>
-                  <p>
+                  <p id="hero-description">
                      Tras recibir una inesperada llamada de sus antepasados,
                      Vaiana debe viajar a los lejanos mares de Oceanía y
                      adentrarse en peligrosas aguas perdidas para vivir una
@@ -97,11 +106,29 @@
                </div>
 
                <div class="hero__buttons">
-                  <button class="hero__trailer-btn">Play Trailer</button>
-                  <button class="hero__details-btn">Details</button>
+                  <button class="hero__trailer-btn" id="hero-trailerBtn">
+                     Watch Trailer
+                  </button>
+                  <button class="hero__details-btn" id="hero-detailsBtn">
+                     Details
+                  </button>
                </div>
-            </article> -->
+            </article>
          </section>
+         <article class="hero__video-container" id="heroVideo-container">
+            <iframe
+               class="hero__video"
+               id="hero-video"
+               width="560"
+               height="315"
+               src="https://www.youtube.com/embed/qkgkUCqEum4"
+               title="YouTube video player"
+               frameborder="0"
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+               referrerpolicy="strict-origin-when-cross-origin"
+               allowfullscreen
+            ></iframe>
+         </article>
 
          <section class="trending-preview" id="trending-preview-container">
             <div class="trending-preview__header">
@@ -110,12 +137,14 @@
                   Ver más
                </button>
             </div>
-            <div class="trending-preview__cover slider__container">
+            <div
+               class="trending-preview__cover slider__container slider--black"
+            >
                <article
-                  class="trending-preview__slider"
+                  class="movies__slider"
                   id="trending-preview__movie-container"
                >
-                  <div class="movie-container">
+                  <!-- <div class="movie-container">
                      <img
                         src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
                         alt="movie title"
@@ -164,7 +193,7 @@
                      <div>
                         <h4>Moana 2</h4>
                      </div>
-                  </div>
+                  </div> -->
                </article>
             </div>
          </section>
@@ -175,7 +204,7 @@
          >
             <h2>Categories</h2>
 
-            <div class="slider__container">
+            <div class="slider__container slider--black">
                <div
                   class="categories__button-section"
                   id="categories-buttons-container"
@@ -201,11 +230,115 @@
                </button>
                <h2 id="generic-title">Título!</h2>
             </div>
-            <div class="generic__categories-slider" id="generic-slider"></div>
+            <div class="slider__container slider--black">
+               <div
+                  class="generic__categories-slider"
+                  id="generic-slider"
+               ></div>
+            </div>
             <div
                class="generic-movies__container"
                id="genericMovies-container"
             ></div>
+         </section>
+
+         <section class="movie-details__section" id="movieDetails-section">
+            <div class="movie-details__poster">
+               <picture class="movie-details__image">
+                  <source
+                     media="(min-width:500px)"
+                     id="movieDetails-poster780"
+                     srcset="
+                        https://image.tmdb.org/t/p/w780//b1WsCRfomw7tRi12NuseKsAJxYK.jpg
+                     "
+                  />
+                  <img
+                     id="movieDetails-poster500"
+                     src="https://image.tmdb.org/t/p/w500//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
+                     alt="Movie title"
+                  />
+               </picture>
+            </div>
+            <div class="movie-details__info-container">
+               <div class="movie-details__header">
+                  <h1 class="movie-details__title" id="movieDetails-title">
+                     Moana
+                  </h1>
+                  <div>
+                     <span class="movie-details__score" id="movieDetails-score"
+                        >5.0</span
+                     >
+                     <span class="movie-details__time" id="movieDetails-time"
+                        >1h 45m</span
+                     >
+                  </div>
+               </div>
+               <div class="movie-details__info">
+                  <p
+                     class="movie-details__description"
+                     id="movieDetails-description"
+                  >
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                     Voluptatem illo odit perspiciatis quae ab impedit modi
+                     earum? Quas blanditiis pariatur officiis reiciendis,
+                     impedit laudantium ut voluptatem iusto repellat saepe
+                     accusamus.
+                  </p>
+                  <div class="movie-details__categories-container">
+                     <!-- <h3>Categories</h3> -->
+                     <div class="slider__container slider--gray">
+                        <div
+                           class="movie-details__categories"
+                           id="moveDetails-categories"
+                        ></div>
+                     </div>
+                  </div>
+                  <div
+                     class="movie-details__trailer"
+                     id="movieDetails-trailer-container"
+                  >
+                     <iframe
+                        class="movie-details__video"
+                        id="moviedetails-video"
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/qkgkUCqEum4"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                     ></iframe>
+                  </div>
+
+                  <div class="movie-details__cast">
+                     <h3>Cast</h3>
+                     <div class="slider__container slider--gray">
+                        <div class="cast__container" id="cast-container"></div>
+                        <!-- <div class="cast__card">
+                           <img
+                              class="cast__image"
+                              src="https://www.themoviedb.org/t/p/w138_and_h175_face/75Tdc3wg9mklJHy5LEj8OMjcPw8.jpg"
+                              alt="Kaitlyn Santa Juana"
+                           />
+                           <div class="cast__info">
+                              <h4 class="cast__name">Kaitlyn Santa Juana</h4>
+                              <p class="cast__character">Stefani Reyes</p>
+                           </div>
+                        </div> -->
+                     </div>
+                  </div>
+                  <div class="movie-details__similar">
+                     <h3>Similar</h3>
+                     <div class="slider__container slider--gray">
+                        <article
+                           class="movies__slider"
+                           id="movieDetails-similarSlider"
+                        ></article>
+                     </div>
+                  </div>
+               </div>
+            </div>
          </section>
       </main>
 

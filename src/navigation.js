@@ -44,7 +44,10 @@ function prepareGenericSection(title, hashButton) {
    heroContainer.classList.add("hidden");
    trendingPreviewContainer.classList.add("hidden");
    categoriesPreviewContainer.classList.add("hidden");
+   movieDetails.classList.add("hidden");
+
    genericSection.classList.remove("hidden");
+   genericContainer.classList.remove("hidden");
 
    genericTitle.innerHTML = title;
 
@@ -55,6 +58,10 @@ function prepareGenericSection(title, hashButton) {
 function navigator() {
    console.log("Hash actual:", location.hash);
    console.log("Última categoría visitada:", lastCategoryVisited);
+   movieDetailsVideo.src = "";
+   heroTrailer.src = "";
+   heroTrailerContainer.classList.add("hidden");
+
    if (!location.hash.startsWith("#category=")) {
       genericSlider.classList.add("hidden");
       categoriesButtonHeader
@@ -85,10 +92,12 @@ function navigator() {
 function homePage() {
    console.log("home");
    heroContainer.classList.remove("hidden");
+
    trendingPreviewContainer.classList.remove("hidden");
    categoriesPreviewContainer.classList.remove("hidden");
 
    genericSection.classList.add("hidden");
+   movieDetails.classList.add("hidden");
 
    navButtonsSelected("#home");
 
@@ -128,8 +137,16 @@ function upcomingPage() {
 
 function searchPage() {
    const [_, query] = document.location.hash.split("=");
-   prepareGenericSection("Upcoming", "#upcoming");
+   prepareGenericSection('Resultados de "' + decodeURI(query) + '"');
    getMoviesByQuery(query);
 
    console.log("query: ", query);
+}
+
+function movieInfoPage() {
+   const [_, movieId] = document.location.hash.split("=");
+   prepareGenericSection("Details");
+   genericContainer.classList.add("hidden");
+   movieDetails.classList.remove("hidden");
+   getMovieById(movieId);
 }
