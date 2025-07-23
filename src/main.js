@@ -1,12 +1,14 @@
 const create = (element) => document.createElement(element);
 const language = "es-MX";
+let page = 1;
+let currentFetchInfiniteScroll;
 
 async function fetchData(params, extraParams = "") {
    const API = "https://api.themoviedb.org/3/";
    const API_KEY = "a6ab7a979a8d2f657c42b91b20a9b7ae";
    try {
       const response = await fetch(
-         `${API}${params}?api_key=${API_KEY}&language=${language}${extraParams}`
+         `${API}${params}?api_key=${API_KEY}&language=${language}${extraParams}&page=${page}`
       );
 
       if (response.status === 200) {
@@ -36,53 +38,112 @@ async function fetchData(params, extraParams = "") {
    }
 }
 
+//Observadores
+//lazy loader
+const lazyLoader = new IntersectionObserver((entries) => {
+   entries.forEach((entry) => {
+      /* console.log({ entry }); */
+      if (entry.isIntersecting) {
+         const imgSrc = entry.target.getAttribute("data-img");
+         entry.target.setAttribute("src", imgSrc);
+      }
+   });
+});
+
+//infinite scroll
+function infiniteScrollObserver(callback) {
+   return new IntersectionObserver(
+      (entries, observer) => {
+         const lastMovie = entries[0];
+         if (!lastMovie.isIntersecting) return;
+         observer.unobserve(lastMovie.target);
+         page++;
+         callback();
+      },
+      {
+         rootMargin: "100px",
+      }
+   );
+}
+
 //función para hacer los posters
-function createMovieContainer(movies, container) {
-   container.innerHTML = "";
+function createMovieContainer(
+   movies,
+   container,
+   { lazyLoad = false, clean = true, infiniteScrollCallback = null } = {}
+) {
+   if (clean) {
+      container.innerHTML = "";
+   }
+
    movies.forEach((movie) => {
       const movieContainer = create("div");
-      const img = create("img");
+      const movieImg = create("img");
       const titleContainer = create("div");
       const movieTitle = create("h4");
       const button = create("button");
 
       movieContainer.classList.add("movie-container");
-      img.src = "https://image.tmdb.org/t/p/w300" + movie.poster_path;
-      img.setAttribute("alt", movie.title);
-      img.addEventListener("click", () => {
+      movieImg.setAttribute(
+         lazyLoad ? "data-img" : "src",
+         "https://image.tmdb.org/t/p/w300" + movie.poster_path
+      );
+      movieImg.setAttribute("alt", movie.title);
+      movieImg.addEventListener("click", () => {
          location.hash = `movie=${movie.id}`;
       });
       movieTitle.innerHTML = movie.title;
 
+      if (lazyLoad) {
+         lazyLoader.observe(movieImg);
+      }
+
       titleContainer.appendChild(movieTitle);
       movieContainer.appendChild(button);
-      movieContainer.appendChild(img);
+      movieContainer.appendChild(movieImg);
       movieContainer.appendChild(titleContainer);
+
       container.appendChild(movieContainer);
    });
+   if (typeof infiniteScrollCallback === "function") {
+      const lastMovieContainer = container.querySelector(
+         ".movie-container:last-child"
+      );
+      if (lastMovieContainer) {
+         const observer = infiniteScrollObserver(infiniteScrollCallback);
+         observer.observe(lastMovieContainer);
+      }
+   }
 }
 
 //función para hacer las tarjetas de cast
-function createCastCard(cast, container) {
+function createCastCard(cast, container, lazyLoad = false) {
    container.innerHTML = "";
    cast.forEach((actor) => {
       const cardContainer = create("div");
-      const img = create("img");
+      const castImg = create("img");
       const actorInfo = create("div");
       const actorName = create("h4");
       const character = create("p");
 
       cardContainer.classList.add("cast__card");
-      img.src = "https://image.tmdb.org/t/p/w185/" + actor.profile_path;
-      img.setAttribute("alt", actor.name);
+      castImg.setAttribute(
+         lazyLoad ? "data-img" : "src",
+         "https://image.tmdb.org/t/p/w185/" + actor.profile_path
+      );
+      castImg.setAttribute("alt", actor.name);
 
       actorName.innerHTML = actor.name;
       character.innerHTML = actor.character;
 
+      if (lazyLoad) {
+         lazyLoader.observe(castImg);
+      }
+
       actorInfo.appendChild(actorName);
       actorInfo.appendChild(character);
 
-      cardContainer.appendChild(img);
+      cardContainer.appendChild(castImg);
       cardContainer.appendChild(actorInfo);
       container.appendChild(cardContainer);
    });
@@ -158,7 +219,10 @@ async function getTrailer(id) {
 async function getTrendingPreview() {
    const movies = await fetchData("trending/movie/day");
    console.log(movies);
-   createMovieContainer(movies, trendingPreviewMovies);
+   createMovieContainer(movies, trendingPreviewMovies, {
+      lazyLoad: true,
+      clean: false,
+   });
    createHero(movies[0].id);
    /* try {
       const response = await fetch(
@@ -190,28 +254,61 @@ async function getCategories(container) {
 
 async function getTrendingMovies() {
    const movies = await fetchData("trending/movie/day");
-   console.log(movies);
-   createMovieContainer(movies, genericContainer);
+   console.log("trending movies, page: ", page, movies);
+   createMovieContainer(movies, genericContainer, {
+      lazyLoad: true,
+      clean: page == 1,
+      infiniteScrollCallback: () => {
+         getTrendingMovies();
+      },
+   });
 }
 async function getMoviesByCategory(id) {
    const movies = await fetchData(`discover/movie`, `&with_genres=${id}`);
-   console.log("category", movies);
-   createMovieContainer(movies, genericContainer);
+   console.log("categories page: ", page, movies);
+   createMovieContainer(movies, genericContainer, {
+      lazyLoad: true,
+      clean: page == 1,
+      infiniteScrollCallback: () => {
+         getMoviesByCategory(id);
+      },
+   });
 }
 
 async function getMoviesByPopularity() {
    const movies = await fetchData("movie/popular");
-   createMovieContainer(movies, genericContainer);
+   console.log("Popularity page: ", page, movies);
+   createMovieContainer(movies, genericContainer, {
+      lazyLoad: true,
+      clean: page == 1,
+      infiniteScrollCallback: () => {
+         getMoviesByPopularity();
+      },
+   });
 }
 
 async function getMoviesByUpcoming() {
    const movies = await fetchData("movie/upcoming");
-   createMovieContainer(movies, genericContainer);
+   console.log("Upcoming page: ", page, movies);
+   createMovieContainer(movies, genericContainer, {
+      lazyLoad: true,
+      clean: page == 1,
+      infiniteScrollCallback: () => {
+         getMoviesByUpcoming();
+      },
+   });
 }
 
 async function getMoviesByQuery(query) {
    const movies = await fetchData(`search/movie`, `&query=${query}`);
-   createMovieContainer(movies, genericContainer);
+   console.log("Query page: ", page, movies);
+   createMovieContainer(movies, genericContainer, {
+      lazyLoad: true,
+      clean: page == 1,
+      infiniteScrollCallback: () => {
+         getMoviesByQuery(query);
+      },
+   });
 }
 
 async function getMovieById(id) {
@@ -239,11 +336,14 @@ async function getMovieById(id) {
          actor.character !== "Additional Voices (voice)"
    );
    console.log("cast filtrado: ", cast);
-   createCastCard(cast, castContainer);
+   createCastCard(cast, castContainer, true);
 
    const similarMoviesData = await fetchData(`movie/${id}/similar`);
 
-   createMovieContainer(similarMoviesData, similarSlider);
+   createMovieContainer(similarMoviesData, similarSlider, {
+      lazyLoad: true,
+      clean: page == 1,
+   });
 
    console.log(movie);
 }

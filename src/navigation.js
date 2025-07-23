@@ -61,6 +61,7 @@ function navigator() {
    movieDetailsVideo.src = "";
    heroTrailer.src = "";
    heroTrailerContainer.classList.add("hidden");
+   page = 1;
 
    if (!location.hash.startsWith("#category=")) {
       genericSlider.classList.add("hidden");

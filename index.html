@@ -70,19 +70,19 @@
                      id="hero-poster800"
                      media="(min-width:800px)"
                      srcset="
-                        https://image.tmdb.org/t/p/w1280/5CAf9N4EfFYBJQPh3J4cbJxM088.jpg
+                        <!-- https://image.tmdb.org/t/p/w1280/5CAf9N4EfFYBJQPh3J4cbJxM088.jpg -->
                      "
                   />
                   <source
                      id="hero-poster500"
                      media="(min-width:500px)"
                      srcset="
-                        https://image.tmdb.org/t/p/w780/5CAf9N4EfFYBJQPh3J4cbJxM088.jpg
+                        <!-- https://image.tmdb.org/t/p/w780/5CAf9N4EfFYBJQPh3J4cbJxM088.jpg -->
                      "
                   />
                   <img
                      id="hero-posterMobile"
-                     src="https://image.tmdb.org/t/p/w500/b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
+                     src="<!-- https://image.tmdb.org/t/p/w500/b1WsCRfomw7tRi12NuseKsAJxYK.jpg -->"
                      alt="Moana"
                   />
                </picture>
@@ -144,46 +144,13 @@
                   class="movies__slider"
                   id="trending-preview__movie-container"
                >
-                  <!-- <div class="movie-container">
-                     <img
-                        src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
-                        alt="movie title"
-                     />
-                     <button class="button--liked"></button>
-                     <div>
-                        <h4>Moana 2</h4>
+                  <!-- <article class="movie-container--loading">
+                     <div class="background--loading">
+                        <div class="image"></div>
                      </div>
-                  </div>
-                  <div class="movie-container">
-                     <img
-                        src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
-                        alt="movie title"
-                     />
-                     <button></button>
-                     <div>
-                        <h4>Moana 2</h4>
-                     </div>
-                  </div>
-                  <div class="movie-container">
-                     <img
-                        src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
-                        alt="movie title"
-                     />
-                     <button></button>
-                     <div>
-                        <h4>Moana 2</h4>
-                     </div>
-                  </div>
-                  <div class="movie-container">
-                     <img
-                        src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
-                        alt="movie title"
-                     />
-                     <button></button>
-                     <div>
-                        <h4>Moana 2</h4>
-                     </div>
-                  </div>
+                  </article> -->
+
+                  <!-- 
                   <div class="movie-container">
                      <img
                         src="https://image.tmdb.org/t/p/w300//b1WsCRfomw7tRi12NuseKsAJxYK.jpg"
@@ -236,10 +203,11 @@
                   id="generic-slider"
                ></div>
             </div>
-            <div
-               class="generic-movies__container"
-               id="genericMovies-container"
-            ></div>
+            <div class="generic-movies__container" id="genericMovies-container">
+               <!-- <article
+                  class="movie-container movie-container--loading"
+               ></article> -->
+            </div>
          </section>
 
          <section class="movie-details__section" id="movieDetails-section">
