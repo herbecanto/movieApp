@@ -2,7 +2,7 @@ const query = (id) => document.querySelector(id);
 const backButton = query(".backBtn");
 
 /* navBar Buttons */
-const headerButtons = document.querySelectorAll(".header__item a");
+const navButtons = document.querySelectorAll(".nav__item a");
 
 /* Hero */
 const heroContainer = query("#hero-container");
@@ -26,7 +26,7 @@ const trendingPreviewBtn = query("#trending-preview-btn");
 /* Categories */
 const categoriesPreviewContainer = query("#categories-preview__container");
 const categoriesButtonsContainer = query("#categories-buttons-container");
-const categoriesButtonHeader = query("#header-categories a");
+const categoriesButtonnav = query("#nav-categories a");
 
 /* Generic */
 const genericSection = query("#genericMovies-section");

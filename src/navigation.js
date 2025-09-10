@@ -17,7 +17,7 @@ clickActions.forEach(([button, hash]) =>
       location.hash = hash;
    })
 );
-categoriesButtonHeader.addEventListener("click", (e) => {
+categoriesButtonnav.addEventListener("click", (e) => {
    e.preventDefault();
    location.hash = `category=${lastCategoryVisited}`;
 });
@@ -28,13 +28,11 @@ searchButton.addEventListener("click", (e) => {
 
 //función para seleccionar la opción en el navbar
 function navButtonsSelected(hash) {
-   headerButtons.forEach((btn) => {
+   navButtons.forEach((btn) => {
       if (btn.getAttribute("href") === hash) {
-         btn.closest(".header__item").classList.add("header__item--selected");
+         btn.closest(".nav__item").classList.add("nav__item--selected");
       } else {
-         btn.closest(".header__item").classList.remove(
-            "header__item--selected"
-         );
+         btn.closest(".nav__item").classList.remove("nav__item--selected");
       }
    });
 }
@@ -65,9 +63,9 @@ function navigator() {
 
    if (!location.hash.startsWith("#category=")) {
       genericSlider.classList.add("hidden");
-      categoriesButtonHeader
-         .closest(".header__item")
-         .classList.remove("header__item--selected");
+      categoriesButtonnav
+         .closest(".nav__item")
+         .classList.remove("nav__item--selected");
    }
    if (location.hash.startsWith("#trending")) {
       trendingPage();
@@ -119,9 +117,9 @@ function categoriesPage() {
    console.log(categoryID);
    lastCategoryVisited = categoryData;
    prepareGenericSection(decodeURI(categoryTitle), "#category=");
-   categoriesButtonHeader
-      .closest(".header__item")
-      .classList.add("header__item--selected");
+   categoriesButtonnav
+      .closest(".nav__item")
+      .classList.add("nav__item--selected");
    genericSlider.classList.remove("hidden");
    getCategories(genericSlider);
    getMoviesByCategory(categoryID);

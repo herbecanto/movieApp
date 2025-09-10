@@ -17,50 +17,53 @@
       />
    </head>
    <body>
-      <header>
-         <h1><a href="#home">Movie App</a></h1>
+      <nav>
+         <div class="nav__container">
+            <h1><a href="#home">Movie App</a></h1>
 
-         <section class="header__list-container">
-            <ul class="header__list">
-               <li class="header__item" id="header-home">
-                  <a href="#home">Home</a>
-               </li>
-               <li class="header__item" id="header-trending">
-                  <a href="#trending">Trending Movies</a>
-               </li>
-               <li class="header__item" id="header-categories">
-                  <a>Categories</a>
-               </li>
-               <li class="header__item" id="header-popular">
-                  <a href="#popular">Popular</a>
-               </li>
-               <li class="header__item"><a href="#upcoming">Upcoming</a></li>
-            </ul>
-         </section>
+            <section class="nav__list-container">
+               <ul class="nav__list">
+                  <li class="nav__item" id="nav-home">
+                     <a href="#home">Home</a>
+                  </li>
+                  <li class="nav__item" id="nav-trending">
+                     <a href="#trending">Trending Movies</a>
+                  </li>
+                  <li class="nav__item" id="nav-categories">
+                     <a>Categories</a>
+                  </li>
+                  <li class="nav__item" id="nav-popular">
+                     <a href="#popular">Popular</a>
+                  </li>
+                  <li class="nav__item"><a href="#upcoming">Upcoming</a></li>
+               </ul>
+            </section>
 
-         <section class="header__section">
-            <form class="header__search" autocomplete="on">
-               <input
-                  class="search__input"
-                  id="search-form-input"
-                  type="text"
-                  placeholder="Buscar"
-               />
-               <button class="search__button" id="search-form-button">
-                  <span class="material-symbols-outlined"> search </span>
-               </button>
-            </form>
-            <select class="header__lang" name="language" id="lang">
-               <option value="en">US English</option>
-               <option value="es-ES">ES Spanish</option>
-               <option value="pt-BR">Br Portuguese Br</option>
-               <option value="fr">FR French</option>
-            </select>
-            <div class="header__menu">
-               <span class="material-symbols-outlined"> menu </span>
-            </div>
-         </section>
-      </header>
+            <section class="nav__section">
+               <form class="nav__search" autocomplete="on">
+                  <input
+                     class="search__input"
+                     id="search-form-input"
+                     type="text"
+                     placeholder="Buscar"
+                  />
+                  <button class="search__button" id="search-form-button">
+                     <span class="material-symbols-outlined"> search </span>
+                  </button>
+               </form>
+               <!-- <select class="nav__lang" name="language" id="lang">
+                  <option value="en">US English</option>
+                  <option value="es-ES">ES Spanish</option>
+                  <option value="pt-BR">Br Portuguese Br</option>
+                  <option value="fr">FR French</option>
+               </select> -->
+               <label class="nav--toggle">
+                  <input class="nav__input" type="checkbox" name="menu" id="" />
+                  <!-- <span class="material-symbols-outlined"> menu </span> -->
+               </label>
+            </section>
+         </div>
+      </nav>
 
       <main>
          <section class="hero-section" id="hero-container">
@@ -89,7 +92,7 @@
             </div>
 
             <article class="hero__info-container">
-               <div class="hero__header">
+               <div class="hero__nav">
                   <span class="hero__rating" id="hero-rating">5.6</span>
                   <span class="hero__time" id="hero-time">1h 30m</span>
                   <span class="hero__trending">TRENDING</span>
@@ -131,7 +134,7 @@
          </article>
 
          <section class="trending-preview" id="trending-preview-container">
-            <div class="trending-preview__header">
+            <div class="trending-preview__nav">
                <h2>Tendencias</h2>
                <button class="trending-preview__btn" id="trending-preview-btn">
                   Ver más
@@ -191,7 +194,7 @@
          </section>
 
          <section class="generic-movies__section" id="genericMovies-section">
-            <div class="generic__header">
+            <div class="generic__nav">
                <button class="backBtn">
                   <span class="material-symbols-outlined"> arrow_back </span>
                </button>
@@ -228,7 +231,7 @@
                </picture>
             </div>
             <div class="movie-details__info-container">
-               <div class="movie-details__header">
+               <div class="movie-details__nav">
                   <h1 class="movie-details__title" id="movieDetails-title">
                      Moana
                   </h1>

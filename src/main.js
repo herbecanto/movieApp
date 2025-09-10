@@ -3,6 +3,7 @@ const language = "es-MX";
 let page = 1;
 let currentFetchInfiniteScroll;
 
+//función de fetch
 async function fetchData(params, extraParams = "") {
    const API = "https://api.themoviedb.org/3/";
    const API_KEY = "a6ab7a979a8d2f657c42b91b20a9b7ae";
